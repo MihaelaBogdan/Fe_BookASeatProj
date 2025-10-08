@@ -1,0 +1,29 @@
+<div class="header">
+  <h2>Reservations</h2>
+  <a routerLink="/reservations/new" class="btn">+ New</a>
+</div>
+
+<div *ngIf="loading">Loading…</div>
+
+<table *ngIf="!loading" class="table">
+  <thead><tr><th>Date</th><th>Time</th><th>Room</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr *ngFor="let r of data">
+      <td>{{r.date | date:'yyyy-MM-dd'}}</td>
+      <td>{{r.startTime}}–{{r.endTime}}</td>
+      <td>{{r.room}}{{r.seat?(' / '+r.seat):''}}</td>
+      <td><span class="badge {{r.status | lowercase}}">{{r.status}}</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.btn{background:#1f4d52;color:#fff;padding:8px 12px;border-radius:10px;text-decoration:none}
+.table{width:100%;background:#fff;border-radius:16px;overflow:hidden;border-collapse:collapse;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+th,td{padding:12px;border-bottom:1px solid #eef2f5}
+.badge{padding:4px 8px;border-radius:8px;background:#e5e7eb}
+.badge.pending{background:#fff7ed}
+.badge.confirmed{background:#dcfce7}
+.badge.cancelled{background:#fee2e2}
+</style>

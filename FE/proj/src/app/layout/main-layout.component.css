@@ -1,0 +1,146 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* 🔹 Sidebar */
+.sidebar {
+  background: #1f4d52;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  padding: 16px;
+  transition: transform 0.35s ease;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.sidebar:not(.open) {
+  transform: translateX(-240px);
+}
+
+.sidebar .logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar a {
+  color: #cde;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background: #2a656b;
+  color: #fff;
+}
+
+.user {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 🔹 Top bar */
+.topbar {
+  background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 20px;
+  margin-left: 240px;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.topbar-title {
+  font-weight: 600;
+}
+
+/* 🔹 Profile dropdown */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 22px;
+  background: #555;
+  color: white;
+  border-radius: 50%;
+  padding: 6px 8px;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  z-index: 3000;
+}
+
+.dropdown a,
+.dropdown button {
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+  background: #f2f2f2;
+}
+
+/* 🔹 Content */
+.content {
+  flex: 1;
+  background: #f6f8f9;
+  padding: 24px;
+  margin-left: 240px;
+  overflow-y: auto;
+}
+
+/* 🔹 Responsive */
+@media (max-width: 900px) {
+  .topbar {
+    margin-left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+}

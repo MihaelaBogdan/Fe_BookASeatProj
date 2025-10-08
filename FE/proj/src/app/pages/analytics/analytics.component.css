@@ -1,0 +1,80 @@
+.analytics-page {
+  padding: 20px;
+  background: #f6f8f9;
+  min-height: 100%;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.cards {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.table-card, .chart-card {
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 16px;
+  flex: 1;
+  min-width: 320px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #e6f1f2;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .filters, .cards {
+    flex-direction: column;
+  }
+}
