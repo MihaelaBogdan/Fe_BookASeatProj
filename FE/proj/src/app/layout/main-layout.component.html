@@ -1,42 +1,38 @@
 <div class="layout">
-  <!-- 🔹 Sidebar -->
-  <aside class="sidebar" [class.open]="sidebarOpen">
-    <div class="logo">LOGO</div>
+  <!-- 🔹 Sidebar fix (verde) -->
+  <!-- <aside class="sidebar">
+    <div class="logo">BookASeat</div>
 
     <nav>
       <a *ngFor="let item of (role === 'ADMIN' ? navAdmin : navEmployee)"
          [routerLink]="item.path"
-         routerLinkActive="active"
-         (click)="toggleSidebar()">{{ item.label }}</a>
+         routerLinkActive="active">{{ item.label }}</a>
     </nav>
 
     <div class="user">
       <div>{{ user?.name || 'User' }}</div>
       <small>{{ role }}</small>
+      <button (click)="logout()">Logout</button>
     </div>
-  </aside>
-
-  <!-- 🔹 Top bar -->
-  <header class="topbar">
-    <button class="hamburger" (click)="toggleSidebar()">☰</button>
-    <div class="topbar-title">Dashboard</div>
-
-    <!-- 🔹 Profile dropdown -->
-    <div class="profile-container" (click)="toggleDropdown()">
-      <div class="profile-icon">👤</div>
-      <div class="dropdown" *ngIf="dropdownOpen">
-        <a routerLink="/profile">Profile</a>
-        <a routerLink="/account">Change Account</a>
-        <button (click)="logout()">Log Out</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- 🔹 Overlay (mobil) -->
-  <div class="overlay" *ngIf="sidebarOpen && isMobile" (click)="toggleSidebar()"></div>
+  </aside> -->
 
   <!-- 🔹 Conținut principal -->
-  <main class="content">
-    <router-outlet></router-outlet>
-  </main>
+  <div class="main-section">
+    <header class="topbar">
+      <div class="topbar-title">Dashboard</div>
+
+      <div class="profile-container" (click)="toggleDropdown()">
+        <div class="profile-icon">👤</div>
+        <div class="dropdown" *ngIf="dropdownOpen">
+          <a routerLink="/profile">Profile</a>
+          <a routerLink="/account">Change Account</a>
+          <button (click)="logout()">Log Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>

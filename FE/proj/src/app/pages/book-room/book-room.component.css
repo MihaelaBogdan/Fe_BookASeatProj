@@ -1,0 +1,102 @@
+.book-room-page {
+  margin-left: 240px;
+  padding: 24px;
+  background: #f6f8f9;
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Date selector */
+.dates {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.dates button {
+  border: none;
+  background: #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dates button.active {
+  background: #1f4d52;
+  color: #fff;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input, select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 140px;
+}
+
+/* Button */
+.btn-search {
+  background: #1f4d52;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-search:hover {
+  background: #174044;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1f4d52;
+  color: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  width: 320px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.popup button {
+  background: #fff;
+  color: #1f4d52;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}

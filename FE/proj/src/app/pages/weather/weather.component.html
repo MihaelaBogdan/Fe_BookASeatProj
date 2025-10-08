@@ -1,0 +1,48 @@
+
+<div class="weather-page">
+  <h2>Weather</h2>
+
+  <!-- 🔹 Navigare lună/an -->
+  <div class="calendar-header">
+    <button (click)="prevMonth()">‹</button>
+    <h3>{{ monthLabel }}</h3>
+    <button (click)="nextMonth()">›</button>
+  </div>
+
+  <!-- 🔹 Calendar -->
+  <div class="calendar">
+    <div class="weekdays">
+      <div *ngFor="let d of daysOfWeek">{{ d }}</div>
+    </div>
+
+    <div class="days">
+      <div *ngFor="let day of calendarDays"
+           [class.empty]="!day"
+           [class.today]="isToday(day)"
+           [class.selected]="isSelected(day)"
+           (click)="selectDay(day)">
+        {{ day?.getDate() || '' }}
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Afișare date meteo -->
+  <div *ngIf="weatherData" class="weather-box">
+    <div class="hours">
+      <div *ngFor="let h of weatherData.hours">
+        <strong>{{ h.hour }}</strong> – {{ h.temp }}°C
+      </div>
+    </div>
+
+    <div class="summary">
+      <p>{{ weatherData.location }}</p>
+      <div class="icon">
+        <span *ngIf="weatherData.condition === 'Sunny'">☀️</span>
+        <span *ngIf="weatherData.condition === 'Cloudy'">☁️</span>
+        <span *ngIf="weatherData.condition === 'Rainy'">🌧️</span>
+      </div>
+      <h3>{{ weatherData.temperature }}°</h3>
+      <p>{{ weatherData.condition }}</p>
+    </div>
+  </div>
+</div>

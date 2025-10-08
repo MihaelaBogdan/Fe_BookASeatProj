@@ -1,9 +1,32 @@
-<h2>Profile</h2>
-<div class="card">
-  <div><b>Name:</b> {{user()?.name}}</div>
-  <div><b>Email:</b> {{user()?.email}}</div>
-  <div><b>Role:</b> {{user()?.role}}</div>
+<div class="profile-wrapper" *ngIf="user; else notLogged">
+  <h2>Profilul meu</h2>
+
+  <div class="profile-card">
+    <div class="avatar">{{ user.name[0] | uppercase }}</div>
+
+    <div class="info">
+      <label>Nume:</label>
+      <input [(ngModel)]="user.name" [readonly]="!isEditing" />
+
+      <label>Email:</label>
+      <input [(ngModel)]="user.email" readonly />
+
+      <label>Rol:</label>
+      <input [(ngModel)]="user.role" readonly />
+
+      <div class="buttons">
+        <button *ngIf="!isEditing" (click)="toggleEdit()" class="btn-edit">Editează</button>
+        <button *ngIf="isEditing" (click)="saveProfile()" class="btn-save">Salvează</button>
+      </div>
+    </div>
+  </div>
 </div>
-<style>
-.card{background:#fff;padding:16px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.05);max-width:480px}
-</style>
+
+<!-- 🔹 Când userul nu este logat -->
+<ng-template #notLogged>
+  <div class="not-logged">
+    <h2>Nu ești autentificat</h2>
+    <p>Te rugăm să te conectezi pentru a-ți vizualiza profilul.</p>
+    <button class="btn-login" (click)="goToLogin()">Mergi la Login</button>
+  </div>
+</ng-template>

@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-reservations-list',
   standalone: true,
-  template: `
-    <h2>Reservations List</h2>
-    @for (item of reservations; track item) {
-      <p>{{ item }}</p>
-    } @empty {
-      <p>No reservations found.</p>
-    }
-  `
+  imports: [CommonModule, SidebarComponent],
+  templateUrl: './reservations-list.component.html',
+  styleUrls: ['./reservations-list.component.css']
 })
 export class ReservationsListComponent {
-  reservations = ['Meeting Room A', 'Desk 12', 'Conference B'];
+  reservations = [
+    { employee: 'Andrei Popescu', date: '2025-10-08', seat: 'Desk 12', room: 'T1 - Etaj 1' },
+    { employee: 'Maria Ionescu', date: '2025-10-09', seat: 'Desk 7', room: 'T2 - Etaj 2' },
+    { employee: 'Admin User', date: '2025-10-10', seat: 'Desk 3', room: 'T1 - Parter' },
+  ];
 }

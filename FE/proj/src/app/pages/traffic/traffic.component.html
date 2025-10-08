@@ -1,0 +1,38 @@
+<div class="traffic-page">
+  <h2>Traffic</h2>
+
+  <div class="inputs">
+    <div>
+      <label>Select starting time</label>
+      <div class="time">
+        <input type="time" [(ngModel)]="fromTime"> -
+        <input type="time" [(ngModel)]="toTime">
+      </div>
+    </div>
+
+    <div>
+      <label>Select distance</label>
+      <div class="distance">
+        <input placeholder="Home address" [(ngModel)]="homeAddress">
+        <input placeholder="Office address" [(ngModel)]="officeAddress">
+      </div>
+    </div>
+  </div>
+
+  <button class="ok-btn" (click)="openPopup()">OK</button>
+
+  <div class="traffic-box">
+    <p>{{ result || 'traffic API' }}</p>
+  </div>
+
+  <button class="calculate-btn" (click)="calculate()">Calculate</button>
+
+  <!-- Popup -->
+  <div class="popup" *ngIf="showPopup">
+    <p>Confirm travel from "{{homeAddress}}" to "{{officeAddress}}"?</p>
+    <div class="popup-buttons">
+      <button (click)="calculate(); closePopup()">OK</button>
+      <button (click)="closePopup()">Cancel</button>
+    </div>
+  </div>
+</div>

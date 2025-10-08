@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BaseChartDirective } from 'ng2-charts';
-
-import { ChartConfiguration } from 'chart.js';
+import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-analytics',
   standalone: true,
-  imports: [CommonModule, FormsModule, BaseChartDirective],
+  imports: [CommonModule, FormsModule, BaseChartDirective, SidebarComponent], // ✅ AICI adăugăm SidebarComponent
   templateUrl: './analytics.component.html',
   styleUrls: ['./analytics.component.css']
 })
@@ -18,37 +17,23 @@ export class AnalyticsComponent {
   selectedWorkspace = '';
 
   times = ['Morning', 'Afternoon', 'Evening'];
-  floors = ['Parter', 'Etaj 1', 'Etaj 2'];
-  workspaces = ['Open Space', 'Meeting Room A', 'Meeting Room B'];
+  floors = ['Etaj 1', 'Etaj 2', 'Etaj 3'];
+  workspaces = ['Sala A', 'Sala B', 'Open Space'];
 
-  // date exemplu pentru tabel
   reservations = [
-    { employee: 'Angajat 1', date: '23 Septembrie', seat: 'Birou 12', room: 'Open Space' },
-    { employee: 'Angajat 2', date: '23 Septembrie', seat: 'Birou 5', room: 'Meeting Room A' },
-    { employee: 'Angajat 3', date: '25 Septembrie', seat: 'Birou 7', room: 'Open Space' },
+    { employee: 'Angajat 1', date: '2025-10-08', seat: 'Desk 5', room: 'Open Space' },
+    { employee: 'Angajat 2', date: '2025-10-09', seat: 'Desk 7', room: 'Sala A' }
   ];
 
-  // 🔹 Config grafic
-  chartData: ChartConfiguration<'line'>['data'] = {
-    labels: ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică'],
+  chartData = {
+    labels: ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri'],
     datasets: [
-      {
-        label: 'Ocupare (%)',
-        data: [20, 35, 70, 90, 55, 40, 60],
-        borderColor: '#1f4d52',
-        backgroundColor: 'rgba(31,77,82,0.1)',
-        tension: 0.3,
-        fill: true
-      }
+      { data: [30, 50, 80, 60, 70], label: 'Ocupare locuri', fill: true, tension: 0.3 }
     ]
   };
 
-  chartOptions: ChartConfiguration<'line'>['options'] = {
+  chartOptions = {
     responsive: true,
-    plugins: { legend: { display: false } },
-    scales: {
-      y: { beginAtZero: true, title: { display: true, text: 'Ocupare (%)' } },
-      x: { title: { display: true, text: 'Zile' } }
-    }
+    maintainAspectRatio: false
   };
 }

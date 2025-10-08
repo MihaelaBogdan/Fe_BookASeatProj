@@ -1,3 +1,5 @@
+<app-sidebar></app-sidebar>
+
 <div class="analytics-page">
   <h2>Select Data</h2>
   <hr />
@@ -51,7 +53,8 @@
     </div>
 
     <div class="chart-card">
-      <canvas baseChart
+      <canvas
+        baseChart
         [data]="chartData"
         [options]="chartOptions"
         chartType="line">
